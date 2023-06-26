@@ -1,0 +1,34 @@
+.recomm-product{
+    width: 150px;
+    position: relative;
+}
+.recomm-product .recomm-product-img-wrapper{
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    border: 1px solid var(--color-primary-light);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.recomm-product-img-wrapper img{
+    width: 100%;
+    object-fit: contain;
+    
+}
+.recomm-product-link{
+    text-decoration: none;
+    color: var(--color-primary);
+}
+input[type="checkbox"]{
+    display: none;
+}
+.select-icon{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--color-primary);
+    background: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}

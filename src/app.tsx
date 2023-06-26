@@ -1,8 +1,13 @@
-import { IApp } from "./types"
+import ItemAccordion from "./components/ItemAccordion/ItemAccordion"
+// import { IApp } from "./types"
 
-function App({ dataURL }  : IApp  ) {
+function App( ) {
+
   return (
-    <div>app</div>
+    //@ts-ignore
+    <div className="app">
+      <ItemAccordion/>
+    </div>
   )
 }
 

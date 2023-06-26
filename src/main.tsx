@@ -1,6 +1,7 @@
+//@ts-nocheck
 import { define } from 'uelements'
 import  App  from './app'
-
+import "./app.css"
 
 
 define(
