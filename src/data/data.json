@@ -1,5 +1,5 @@
 {
-  "products": [
+  "earrings": [
     {
       "id": 1,
       "title": "Braided Everyday U-Hoop",
@@ -29,6 +29,69 @@
       "title": "Donut Stud",
       "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/11ComboCuff-998_newbgv2_a2da4ae7-311b-412c-9d03-fbb61d38fe4a_350x350.jpg?v=1686568312",
       "price": "65"
+    }
+  ],
+  "anklets": [
+    {
+      "id": 6,
+      "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/5Anklets-057_newbgv2_350x350.jpg?v=1686568168",
+      "title": "Baby Clip Anklet",
+      "price": "40"
+    },
+    {
+      "id": 7,
+      "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/6Anklets-647_newbgv2_350x350.jpg?v=1686568405",
+      "title": "Mini Sphere Anklet",
+      "price": "60"
+    },
+    {
+      "id": 8,
+      "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/5Anklets-846_newbgv2_350x350.jpg?v=1686568281",
+      "title": "Bold Cuban Link Anklet",
+      "price": "70"
+    },
+    {
+      "id": 9,
+      "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/5Anklets-059_newbgv2_350x350.jpg?v=1686568355",
+      "title": "Maxi Cuban Link Anklet",
+      "price": "40"
+    },{
+      "id": 10,
+      "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/5Anklets-061_newbgv2_350x350.jpg?v=1686568203",
+      "title": "Baby Cuban Link Anklet",
+      "price": "30"
+    }
+  ],
+  "necklaces": [
+    {
+      "id": 11,
+      "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/3Necklaces-434_newbgv2_350x350.jpg?v=1686568195",
+      "title": "Baby Clip Necklace",
+      "price": "26"
+    },
+    {
+      "id": 12,
+      "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/3Necklaces-415_newbgv2_350x350.jpg?v=1686568217",
+      "title": "Baby Cuban Link Necklace",
+      "price": "46"
+    },
+    {
+      "id": 13,
+      "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/3Necklaces-363_newbgv2_350x350.jpg?v=1686568238",
+      "title": "Baby Sphere Necklace",
+      "price": "30"
+    },
+    {
+      "id": 14,
+      "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/3Necklaces-882_newbgv2_350x350.jpg?v=1686570841",
+      "title": "Maxi Clip Necklace",
+      "price": "50"
+    },
+    {
+      "id": 15,
+      "img": "https://cdn.shopify.com/s/files/1/0591/3064/2592/files/3Necklaces-034_newbgv2_350x350.jpg?v=1686571318",
+      "title": "Maxi Sphere Necklace",
+      "price": "70"
     }
   ]
 }
