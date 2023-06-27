@@ -1,7 +1,6 @@
 import { useState } from 'uelements';
 import './recommProduct.css';
 import { SelectIcon } from '../../assets/icons';
-// type Props = {}
 
 const RecommProduct = ({id, img, title, price}) => {
     const [isChecked, setIsChecked] = useState(false);
@@ -14,11 +13,10 @@ const RecommProduct = ({id, img, title, price}) => {
                 </label>
                 <input type="checkbox" name="" id={id} checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
                 {isChecked ? <SelectIcon/>: (<span className="select-icon"></span>)}
-
             </div>
             <a href="#" class="recomm-product-link">
                 <div class="recomm-product-title">{title}</div>
-                <div className="recomm-product-price">${price}</div>
+                <span className="money">${price}</span>
             </a>
         </div>
     )

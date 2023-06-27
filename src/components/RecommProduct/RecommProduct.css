@@ -27,7 +27,7 @@ input[type="checkbox"]{
     top: 10px;
     right: 10px;
     color: var(--color-primary);
-    background: white;
+    background: rgba(255, 255, 255, 0.726);
     border-radius: 50%;
     width: 20px;
     height: 20px;
