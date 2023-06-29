@@ -1,5 +1,6 @@
 .recomm-product{
     width: 150px;
+    height: auto;
     position: relative;
 }
 .recomm-product .recomm-product-img-wrapper{

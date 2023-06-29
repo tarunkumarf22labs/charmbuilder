@@ -2,7 +2,7 @@ import { useState } from "uelements";
 import "./RecommProduct.css";
 import { SelectIcon } from "../../assets/icons";
 
-const RecommProduct = ({ title, images, id, money, variants, Setorder }) => {
+const RecommProduct = ({ title, images, id, money, variants, Setorder, selectedProduct, setSelectedProduct, setEdit }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   function handleIsChecked(event) {
@@ -10,8 +10,11 @@ const RecommProduct = ({ title, images, id, money, variants, Setorder }) => {
     event.preventDefault();
 
     const id = variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
-    setIsChecked(!isChecked);
+    setIsChecked( (prev) => !prev);
 
+    setSelectedProduct({...selectedProduct, id: id, title: title, price: money});
+    setEdit(false);
+    
     if(isChecked){
         Setorder((prev) => {
             let data = prev.data.filter((item) => item.id !== id);
@@ -22,8 +25,7 @@ const RecommProduct = ({ title, images, id, money, variants, Setorder }) => {
                data,
                order
             };
-         });
-        
+         });        
     } else {
         Setorder((prev) => {
             return {
