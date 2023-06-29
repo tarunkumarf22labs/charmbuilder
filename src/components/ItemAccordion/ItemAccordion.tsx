@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'uelements';
+import { useEffect, useState  } from 'uelements';
 import Client from 'shopify-buy';
 import RecommProduct from '../RecommProduct/RecommProduct';
 import './ItemAccordion.css';
 
-const ItemAccordion = ({title , id}) => {
-  const [isOpen, setIsOpen] = useState();
+const ItemAccordion = ({title , id , Setorder}) => {
+  const [isOpen, setIsOpen] = useState(true);
   const [ data , setData]  =  useState([]);
 
    useEffect(() => {
@@ -23,13 +23,19 @@ const ItemAccordion = ({title , id}) => {
     });
    }
   
-    const recommProducts =   data?.map(product =>
-      <RecommProduct {...product}/>
+
+
+    const recommProducts =   data?.map(product =>{
+      const [money, ] = useState(`$${product.variants?.[0]?.price.amount}`)
+       return <RecommProduct {...product} money = {money} Setorder={Setorder} />
+    }
     )
+   
 
   return (
     <div className="item-accordion">
-      <div className="acc-header" onClick={() => setIsOpen(!isOpen)}>
+      <div className="acc-header" onClick={() => {
+        setIsOpen(!isOpen)}}>
         <span>{title}</span>
         <span className="toggle-icons">
           <div className="toggle-icon"></div>
