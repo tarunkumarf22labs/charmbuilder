@@ -13,6 +13,23 @@ const ItemAccordion = ({ title, id, Setorder }) => {
     title: '',
     price: ''
   }]);
+  const [vdata, setdata] = useState({})
+  function handleChange(value) {
+    setdata(value)
+    console.log(value);
+    Setorder((prev) => {
+      console.log(prev , "prev");
+      
+                  let data = prev.data.filter((item) => item.type !== value.type);
+                  let order = prev.order.filter((item) => item.type !== value.type);
+                  
+                  return {
+                    data : [...data , value],
+                    order : [...order , { quantity : 1 , ...value }]
+                  }
+    } )
+    
+  }
 
   useEffect(() => {
     handleData()
@@ -34,7 +51,12 @@ const ItemAccordion = ({ title, id, Setorder }) => {
 
   const recommProducts = data?.map(product => {
     const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)
-    return <RecommProduct {...{ ...product, money, Setorder, selectedProduct, setSelectedProduct, setEdit }} />
+   
+     
+    const id = product.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
+     // const [isChecked, setIsChecked] = useState(false);
+
+     return <RecommProduct {...{ ...product, money, Setorder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
   }
   )
 

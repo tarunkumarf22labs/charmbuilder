@@ -2,39 +2,36 @@ import { useState } from "uelements";
 import "./RecommProduct.css";
 import { SelectIcon } from "../../assets/icons";
 
-const RecommProduct = ({ title, images, id, money, variants, Setorder, selectedProduct, setSelectedProduct, setEdit }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const RecommProduct = ({ title, images, id, money, variants, Setorder, selectedProduct, setSelectedProduct, setEdit  , datatitle , handleChange , ischecked}) => {
+  // const [isChecked, setIsChecked] = useState(false);
 
   function handleIsChecked(event) {
     event.stopPropagation();
     event.preventDefault();
 
     const id = variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
-    setIsChecked( (prev) => !prev);
-
     setSelectedProduct({...selectedProduct, id: id, title: title, price: money});
     setEdit(false);
-    
-    if(isChecked){
-        Setorder((prev) => {
-            let data = prev.data.filter((item) => item.id !== id);
-            let order = prev.order.filter((item) => item.id !== id);
-         
-            console.log(data, order);
-            return {
-               data,
-               order
-            };
-         });        
-    } else {
-        Setorder((prev) => {
-            return {
-              data: [...prev.data, { title, image: images[0].src, price: money , id }],
-              order: [...prev.order, { quantity: 1, id }],
-            };
-          });
-        }
-    }
+    handleChange({id : id ,title: title, price: money , type : datatitle })
+    // if(ischecked){
+    //     Setorder((prev) => {
+    //         let data = prev.data.filter((item) => item.id !== id);
+    //         let order = prev.order.filter((item) => item.id !== id);
+    //         return {
+    //            data,
+    //            order
+    //         };
+    //      });        
+    // } else {
+    //     Setorder((prev) => {
+    //         return {
+    //           data: [...prev.data, { title, image: images[0].src, price: money , id }],
+    //           order: [...prev.order, { quantity: 1, id }],
+    //         };
+    //       });
+    //     }
+    // }
+  }
 
 
   return (
@@ -45,12 +42,12 @@ const RecommProduct = ({ title, images, id, money, variants, Setorder, selectedP
         </label>
         <input
           type="checkbox"
-          name=""
+          name={datatitle}
           id={id}
-          checked={isChecked}
+          checked={ischecked}
           onChange={handleIsChecked}
         />
-        {isChecked ? <SelectIcon /> : <span className="select-icon"></span>}
+        {ischecked ? <SelectIcon /> : <span className="select-icon"></span>}
       </div>
       <a href="#" class="recomm-product-link">
         <div class="recomm-product-title">{title}</div>
