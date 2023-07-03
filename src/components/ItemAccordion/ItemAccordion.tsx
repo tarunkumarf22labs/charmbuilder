@@ -4,25 +4,19 @@ import RecommProduct from '../RecommProduct/RecommProduct';
 import { MinusIcon, PlusIcon } from '../../assets/icons';
 import './ItemAccordion.css';
 
-const ItemAccordion = ({ title, id, Setorder }) => {
-  const [isOpen, setIsOpen] = useState(true);
+const ItemAccordion = ({ title, Setorder ,  collectionid , products , gopen}) => {
+  const [isOpen, setIsOpen] = useState(gopen);
   const [data, setData] = useState([]);
   const [edit, setEdit] = useState(true);
-  const [selectedProduct, setSelectedProduct] = useState( () =>  [{
-    id: '',
-    title: '',
-    price: ''
-  }]);
+  const [selectedProduct, setSelectedProduct] = useState( () =>  []);
   const [vdata, setdata] = useState({})
+
+
   function handleChange(value) {
     setdata(value)
-    console.log(value);
-    Setorder((prev) => {
-      console.log(prev , "prev");
-      
+    Setorder((prev) => {    
                   let data = prev.data.filter((item) => item.type !== value.type);
                   let order = prev.order.filter((item) => item.type !== value.type);
-                  
                   return {
                     data : [...data , value],
                     order : [...order , { quantity : 1 , ...value }]
@@ -31,8 +25,33 @@ const ItemAccordion = ({ title, id, Setorder }) => {
     
   }
 
+
+  async function fetchProductData() {
+    let PRODUCT_DATA = await Promise.all(products.map((product) => {
+      return productData(product);
+    }));
+    setData(PRODUCT_DATA)
+  }
+async  function productData(id){
+    const client = Client.buildClient({
+      storefrontAccessToken: import.meta.env.VITE_SHOPIFY_ACESSTOKEN,
+      domain: "oni-jewelry.myshopify.com",
+      apiVersion: "2023-01",
+    });
+    const productId = `gid://shopify/Product/${id}`;
+    const product =  client.product.fetch(productId)
+    return product
+  }
+
   useEffect(() => {
-    handleData()
+    if(products.length) {
+        fetchProductData()
+      
+     return
+    } else {
+      handleData()     
+    } 
+ 
   }, []);
 
   async function handleData() {
@@ -41,7 +60,7 @@ const ItemAccordion = ({ title, id, Setorder }) => {
       domain: "oni-jewelry.myshopify.com",
       apiVersion: "2023-01",
     });
-    const collectionId = `gid://shopify/Collection/${id}`;
+    const collectionId = `gid://shopify/Collection/${collectionid}`;
     return client.collection.fetchWithProducts(collectionId, { productsFirst: 10 }).then((collection) => {
       setData(collection.products)
     });
@@ -50,13 +69,9 @@ const ItemAccordion = ({ title, id, Setorder }) => {
 
 
   const recommProducts = data?.map(product => {
-    const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)
-   
-     
+    const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)   
     const id = product.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
-     // const [isChecked, setIsChecked] = useState(false);
-
-     return <RecommProduct {...{ ...product, money, Setorder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
+    return <RecommProduct {...{ ...product, money, Setorder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
   }
   )
 
@@ -67,20 +82,26 @@ const ItemAccordion = ({ title, id, Setorder }) => {
         <div className="acc-header" onClick={() => {
           setIsOpen(!isOpen)
         }}>
-          <span className='acc-title'>Add {title}</span>
+          <span className='acc-title'> {title}</span>
           {isOpen ? (<MinusIcon />) : (<PlusIcon />)}
         </div>
         <div className={`acc-body ${isOpen ? "" : "hide"}`}>
           <div className="recomm-products-wrapper">
             {recommProducts}
-          </div>
+          </div>  
         </div>
       </div>
       <div className={`selected-product-card ${edit ? 'hidden': ''}`}>
-        <span className='acc-title'>Add {title}</span>
+        <span className='acc-title'>{title}</span>
         <span className='added-item'>Added Item</span>
         <div className="selected-product-details">
-          <span className="selected-product-title">{selectedProduct.title}</span>  <span className="money">{selectedProduct.price}</span>
+        {selectedProduct?.map((product) => {
+            return (
+              <div className="charmproduct-details" >
+                <div className="selected-product-title">{product.title}</div>  <div className="money" style="text-align: end;">{product.price}</div>
+              </div>
+            )
+          })}
         </div>
         <span className="edit-button" onClick={() => setEdit(true)}>Edit</span>
       </div>
