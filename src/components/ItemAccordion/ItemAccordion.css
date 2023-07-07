@@ -28,7 +28,6 @@
     height: 15px;
     color: var(--color-primary);
 }
-
 .acc-body{
     width: 100%;
     border-radius: 20px;
@@ -53,13 +52,11 @@
     background: var(--color-primary);
     height: 0px;
     border-radius: 20px;
-
 }
 .recomm-products-wrapper::-webkit-scrollbar-track{
     background: var(--color-primary-light);
     border-radius: 20px;
 }
-
 .hide{
     max-height: 0px;
     overflow: hidden;
@@ -67,7 +64,6 @@
     padding-bottom: 0;
     margin-top: 0;
 }
-
 .selected-product-card{
     display: flex;
     justify-content: flex-start;
@@ -76,21 +72,52 @@
     border-radius: 10px;
     padding: 1rem;
     gap: 5px;
+    font-family: var(--text-primary);
+    margin-bottom: 5px;
 }
+.charmproduct-details{
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    width: 100%;
+    column-gap: 10px;
+    padding-top: 2px;
+  }
 .selected-product-details{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
-
+.selected-product-img{
+    width: 64px;
+    /* height: 64px; */
+}
+.selected-product-img img{
+    width: 100%;
+    object-fit: contain;
+}
+.selected-product-text{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.selected-product-info .title{
+    font-size: 16px;
+}
+.selected-product-info .color{
+    font-size: 12px;
+}
 .edit-button{
     justify-self: flex-start;
     color: var(--color-primary);
     font-family: var(--text-primary);
     font-size: var(--text-medium);
     text-transform: uppercase;
+    cursor: pointer;
 }
-
 .hidden{
     display: none;
 }
+
+
+
+

@@ -45,8 +45,7 @@ async  function productData(id){
 
   useEffect(() => {
     if(products.length) {
-        fetchProductData()
-      
+        fetchProductData()  
      return
     } else {
       handleData()     
@@ -69,7 +68,7 @@ async  function productData(id){
 
 
   const recommProducts = data?.map(product => {
-    const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)   
+    const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)  
     const id = product.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
     return <RecommProduct {...{ ...product, money, Setorder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
   }
@@ -96,9 +95,19 @@ async  function productData(id){
         <span className='added-item'>Added Item</span>
         <div className="selected-product-details">
         {selectedProduct?.map((product) => {
+            if(!product.image) return
             return (
               <div className="charmproduct-details" >
-                <div className="selected-product-title">{product.title}</div>  <div className="money" style="text-align: end;">{product.price}</div>
+                <div className="selected-product-img">
+                  <img src={product.image} alt="product_img" />
+                </div>
+                <div className="selected-product-text">
+                  <div className="selected-product-info">
+                    <p className='title'>{product.title}</p>
+                    <p className="color">Color: {product.type}</p>
+                  </div>
+                  <span className="money" style="text-align: end; font-weight: 600; width: 80px;"  dangerouslySetInnerHTML={{ __html: product.price }} ></span>
+                </div>
               </div>
             )
           })}

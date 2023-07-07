@@ -1,7 +1,10 @@
 .recomm-product{
-    width: 150px;
+    /* width: 150px; */
     height: auto;
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 .recomm-product .recomm-product-img-wrapper{
     flex-shrink: 0;
@@ -12,13 +15,28 @@
     overflow: hidden;
 }
 .recomm-product-img-wrapper img{
+    height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
     
+}
+.recomm-product-info{
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
 }
 .recomm-product-link{
     text-decoration: none;
+    color: var(--color-primary);                                            
+}
+#recomm-product-variant-selector{
     color: var(--color-primary);
+    padding: 5px;
+    border: 1px solid var(--color-primary-light);
+    border-radius: 5px;
+    font-size: 16px;
 }
 input[type="checkbox"]{
     display: none;
@@ -26,7 +44,7 @@ input[type="checkbox"]{
 .select-icon{
     position: absolute;
     top: 10px;
-    right: 10px;
+    left: 10px;
     color: var(--color-primary);
     background: rgba(255, 255, 255, 0.726);
     border-radius: 50%;

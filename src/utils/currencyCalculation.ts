@@ -1,4 +1,4 @@
-export function currencyCalculation(currencydata){
+export function currencyCalculation(currencydata){    
     let total_price = 0;
     let currencySymbol = '';
     for (let item of currencydata) {
