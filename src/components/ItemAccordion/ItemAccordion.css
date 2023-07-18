@@ -1,9 +1,10 @@
 .item-accordion{
     font-family: var(--text-primary);
     margin-bottom: 5px;
-}
-.acc-header{
     border: 1px solid var(--color-primary-light);
+}
+
+.acc-header{
     font-size: var(--text-medium);
     font-weight: 500;
     color: var(--color-primary);
@@ -117,6 +118,7 @@
 .hidden{
     display: none;
 }
+
 
 
 

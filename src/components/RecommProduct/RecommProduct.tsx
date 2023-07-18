@@ -1,4 +1,4 @@
-import { useState , useEffect , useRef} from "uelements";
+import { useState } from "uelements";
 import "./RecommProduct.css";
 import { SelectIcon } from "../../assets/icons";
 import { memo } from "preact/compat";
@@ -25,7 +25,7 @@ const RecommProduct = ({
    
     if (isChecked) {
       setSelectedProduct((prev) => {
-        let data = prev.filter((item) => item.id !== id);
+        let data = prev.filter((item) => item.title !== title);
         if (data.length === 0) {
           setEdit(true);
         }
@@ -159,7 +159,6 @@ const RecommProduct = ({
         }}
         placeholder="selectproduct"
       >
-        <option value="" selected={true}>Select Variant</option>
         {variants.map((prev) => {    
           return (
             <option

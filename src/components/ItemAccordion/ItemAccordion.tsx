@@ -77,7 +77,7 @@ async  function productData(id){
 
   return (
     <>
-      <div className={`item-accordion ${edit ? '': 'hidden'}`}>
+      <div className={`item-accordion ${edit ? '': 'hidden'} ${isOpen? "br-1" : "br-2"}`}>
         <div className="acc-header" onClick={() => {
           setIsOpen(!isOpen)
         }}>

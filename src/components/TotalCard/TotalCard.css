@@ -1,0 +1,50 @@
+.total-card{
+    width: 100%;
+    border: 1px solid var(--color-primary-light);
+    border-radius: 25px;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-family: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.total-cart-heading{
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-primary);
+    font-size: var(--text-large);
+}
+
+.total-card-price{
+    font-weight: bold;
+}
+
+.total-card-items{
+    color: var(--color-secondary);
+    font-size: var(--text-small);
+    text-transform: uppercase;
+}
+
+.total-card-products{
+    font-size: var(--text-large);
+}
+.total-card-product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.total-card-product-price{
+    font-weight: bold;
+}
+
+.show-all{
+    text-transform: uppercase;
+    font-size: var(--text-medium);
+    color: var(--color-primary);
+}
+
+.total-card-product-title{
+    max-width: 70%;
+}

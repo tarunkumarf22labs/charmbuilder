@@ -4,6 +4,7 @@ import Client from "shopify-buy";
 import { currencyCalculation } from "./utils/currencyCalculation";
 import { useState, useEffect } from "uelements";
 import ItemAccordion from "./components/ItemAccordion/ItemAccordion";
+import TotalCard from "./components/TotalCard/TotalCard";
 
 function App() {
   // const Url = "http://localhost:3000/data"
@@ -27,17 +28,24 @@ function App() {
     const productId = `gid://shopify/Product/${id}`;
 
     client.product.fetch(productId).then((product) => {
+       let pua =  product.variants[0].id.replace(
+        /gid:\/\/shopify\/ProductVariant\//, ""
+      );
+      console.log(pua);
+      
       Setorder((prev) => {
         return {
           ...prev,
           data: [
             ...prev.data,
-            { price: `$${product.variants[0].price.amount}` },
+            { price: `$${product.variants[0].price.amount}` , title  : product.title  ,  id: product.variants[0].id.replace(
+              /gid:\/\/shopify\/ProductVariant\//,""
+            ) },
           ],
           initialproduct: {
             quantity: 1,
             id: product.variants[0].id.replace(
-              /gid:\/\/shopify\/ProductVariant\//
+              /gid:\/\/shopify\/ProductVariant\//,""
             ),
             title: product.title,
           },
@@ -101,8 +109,7 @@ function App() {
       .catch((error) => console.error(error));
   }
 
-  console.log(order , "order");
-  
+  console.log(order, "");
 
   return (
     <div className="app">
@@ -119,8 +126,8 @@ function App() {
           />
         );
       })}
-
-      <div className="flex charm-details" style="display: flex;justify-content: center;align-items: center;margin-top: 15px;">
+      
+      {/* <div className="flex charm-details" style="display: flex;justify-content: center;align-items: center;margin-top: 15px;">
         <div
           className="items_charm-container flex "
           style="justify-content: end;border-right: 1px solid red;padding-right: 10px;"
@@ -139,24 +146,8 @@ function App() {
             }}
           ></span>
         </div>
-      </div>
-
-      {order?.order?.length ? (
-        <div
-          className="act-wrapper"
-          style="display: flex; justify-content: center; align-item: center; gap: 1rem;"
-        >
-          <button
-            className="acc-body"
-            onClick={handleClick}
-            style="max-height: none;border: 1px solid;padding: 10px;background: #6E2637;color: white;  height: 35px; width: 249px; padding: 3px 28px; font-size: 18px;"
-          >
-            Add to Bag
-          </button>
-        </div>
-      ) : (
-        ""
-      )}
+      </div>  */}
+      {order?.order?.length ? <TotalCard handleClick={handleClick}  data={order.data}  /> : ""}
     </div>
   );
 }
