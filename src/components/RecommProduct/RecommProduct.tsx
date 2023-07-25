@@ -11,7 +11,8 @@ const RecommProduct = ({
   Setorder,
   setSelectedProduct,
   setEdit,
-  money
+  money,
+  handle
 }) => {
   const [isChecked, setIsChecked] = useState(false);
   function handleIsChecked(event) {
@@ -131,7 +132,7 @@ const RecommProduct = ({
     <div className="recomm-product">
       <div className="recomm-product-img-wrapper">
         <label for={id}>
-          <img src={images[0].src} alt="product_img" />
+          <img src={images[0]?.src} alt="product_img" />
         </label>
         <input
           type="checkbox"
@@ -143,12 +144,12 @@ const RecommProduct = ({
         {isChecked ? <SelectIcon  onClick={(event)=> handleIsChecked(event)} /> : <span className="select-icon" onClick={(event)=> handleIsChecked(event)}></span>}
       </div>
       <div className="recomm-product-info">
-      <a href="#" class="recomm-product-link">
+      <a href={`/products/${handle}`} target="_blank" class="recomm-product-link">
         <div class="recomm-product-title">{title}</div>
         <span className="money"  dangerouslySetInnerHTML={{ __html: money }} ></span>
       </a>
 
-      <select
+      {variants && variants.length > 1 && <select
          id = "recomm-product-variant-selector"
         onChange={(event) => {
           let data = (event.target as HTMLInputElement).value
@@ -170,7 +171,7 @@ const RecommProduct = ({
             </option>
           );
         })}
-      </select>
+      </select>}
       </div>
    
     </div>

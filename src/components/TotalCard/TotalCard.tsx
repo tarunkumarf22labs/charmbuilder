@@ -40,14 +40,13 @@ const TotalCard = ({handleClick , data }) => {
       </div>
       <div
           className="act-wrapper"
-          style="display: flex; justify-content: center; align-item: center; gap: 1rem;"
+          style="display: flex; justify-content: center; align-item: center; gap: 1rem; margin-top: 20px;"
         >
           <button
-            className="acc-body"
+            className="act-btn"
             onClick={handleClick}
-            style="max-height: none;border: 1px solid;padding: 10px;background: #6E2637;color: white;  height: 35px; width: 249px; padding: 3px 28px; font-size: 18px;"
           >
-            Add to Bag
+            Add to Cart
           </button>
         </div>
       {/* <div className="show-all">Show All</div> */}

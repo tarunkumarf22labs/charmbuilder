@@ -35,8 +35,8 @@ const ItemAccordion = ({ title, Setorder ,  collectionid , products , gopen}) =>
 async  function productData(id){
     const client = Client.buildClient({
       storefrontAccessToken: import.meta.env.VITE_SHOPIFY_ACESSTOKEN,
-      domain: "oni-jewelry.myshopify.com",
-      apiVersion: "2023-01",
+      domain: "kikkiza.myshopify.com",
+      apiVersion: "2023-07",
     });
     const productId = `gid://shopify/Product/${id}`;
     const product =  client.product.fetch(productId)
@@ -69,7 +69,7 @@ async  function productData(id){
 
   const recommProducts = data?.map(product => {
     const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)  
-    const id = product.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
+    const id = product?.variants[0]?.id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
     return <RecommProduct {...{ ...product, money, Setorder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
   }
   )
@@ -104,7 +104,7 @@ async  function productData(id){
                 <div className="selected-product-text">
                   <div className="selected-product-info">
                     <p className='title'>{product.title}</p>
-                    <p className="color">Color: {product.type}</p>
+                    {/* <p className="color">Color: {product.type}</p> */}
                   </div>
                   <span className="money" style="text-align: end; font-weight: 600; width: 80px;"  dangerouslySetInnerHTML={{ __html: product.price }} ></span>
                 </div>

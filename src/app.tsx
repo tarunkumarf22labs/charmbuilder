@@ -18,20 +18,21 @@ function App() {
   });
   const [show, setshow] = useState(true);
   const [api, setapi] = useState([]);
-
+  // www.memara.co.uk
   async function handleProduct(id) {
     const client = Client.buildClient({
       storefrontAccessToken: import.meta.env.VITE_SHOPIFY_ACESSTOKEN,
-      domain: "oni-jewelry.myshopify.com",
-      apiVersion: "2023-01",
+      domain: "kikkiza.myshopify.com",
+      apiVersion: "2023-07",
     });
     const productId = `gid://shopify/Product/${id}`;
-
+  console.log(productId);
+  
     client.product.fetch(productId).then((product) => {
        let pua =  product.variants[0].id.replace(
         /gid:\/\/shopify\/ProductVariant\//, ""
       );
-      console.log(pua);
+      console.log("Products -> ", product);
       
       Setorder((prev) => {
         return {
@@ -56,10 +57,14 @@ function App() {
 
   async function handleData() {
     const value = await window.fetch(
-      "https://api.jsonbin.io/v3/b/64a56b729d312622a37aa639"
+      "https://api.jsonbin.io/v3/b/64bf944a8e4aa6225ec31875"
     );
     let data = await value.json();
+    console.log(data.record.data["/products/marilyn-bracelet-in-silver-with-peridot"]);
+    
     setapi(data.record.data[base]?.collection);
+    console.log(data.record.data[base]?.product , "data.record.data[base]?.product");
+    
     if (!data.record.data[base]?.product) return;
     setshow(false);
     handleProduct(data.record.data[base]?.product);
@@ -67,6 +72,7 @@ function App() {
   }
 
   useEffect(() => {
+    
     handleData();
   }, []);
 
@@ -86,15 +92,16 @@ function App() {
         quantity: prev.quantity,
       };
     });
-
+   console.log(document.querySelector(".select-on-focus").value ,  Number(document.querySelector(".select-on-focus").value) , " select-on-focus");
+   
     const payload = {
       items: [
         ...payloaddata,
-        { id: document.querySelector("#variant-selector").value, quantity: 1 },
+        { id: order.initialproduct.id, quantity: Number(document.querySelector(".select-on-focus").value) },
       ],
     };
 
-    fetch("https://www.wear-oni.com/cart/add.js", {
+    fetch("https://www.memara.co.uk/cart/add.js", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -103,13 +110,12 @@ function App() {
     })
       .then((response) => {
         response.json();
-        window.location.href = "https://www.wear-oni.com/cart";
+        window.location.href = "https://www.memara.co.uk/cart";
       })
       .then((data) => data)
       .catch((error) => console.error(error));
   }
 
-  console.log(order, "");
 
   return (
     <div className="app">

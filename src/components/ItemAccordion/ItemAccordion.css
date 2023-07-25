@@ -1,5 +1,5 @@
 .item-accordion{
-    font-family: var(--text-primary);
+    font-family: inherit;
     margin-bottom: 5px;
     border: 1px solid var(--color-primary-light);
 }
@@ -7,7 +7,7 @@
 .acc-header{
     font-size: var(--text-medium);
     font-weight: 500;
-    color: var(--color-primary);
+    color: var(--green);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -17,7 +17,7 @@
 .acc-title{
     font-size: var(--text-large);
     font-weight: 500;
-    color: var(--color-primary);
+    color: var(--green);
 }
 .added-item{
     color: var(--color-secondary);
@@ -27,11 +27,11 @@
 .toggle-icon{
     width: 15px;
     height: 15px;
-    color: var(--color-primary);
+    color: var(--green);
 }
 .acc-body{
     width: 100%;
-    border-radius: 20px;
+    border-radius: 5px;
     margin-top: 10px;
     padding: 20px;
     max-height: 3000px;
@@ -45,12 +45,13 @@
     gap: 1rem;
     overflow-x: auto;
     padding: 15px 0px;
+    -webkit-overflow-scrolling: auto !important;
 }
 .recomm-products-wrapper::-webkit-scrollbar{
     height: 5px;
 }
 .recomm-products-wrapper::-webkit-scrollbar-thumb{
-    background: var(--color-primary);
+    background: var(--green);
     height: 0px;
     border-radius: 20px;
 }
@@ -68,12 +69,13 @@
 .selected-product-card{
     display: flex;
     justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
     border: 1px solid var(--color-primary-light);
     border-radius: 10px;
     padding: 1rem;
     gap: 5px;
-    font-family: var(--text-primary);
+    font-family: inherit;
     margin-bottom: 5px;
 }
 .charmproduct-details{
@@ -103,6 +105,7 @@
 }
 .selected-product-info .title{
     font-size: 16px;
+    text-align: left;
 }
 .selected-product-info .color{
     font-size: 12px;
@@ -110,7 +113,7 @@
 .edit-button{
     justify-self: flex-start;
     color: var(--color-primary);
-    font-family: var(--text-primary);
+    font-family: inherit;
     font-size: var(--text-medium);
     text-transform: uppercase;
     cursor: pointer;
