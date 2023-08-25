@@ -56,13 +56,13 @@ function App() {
 
   async function handleData() {
     const value = await window.fetch(
-      "https://api.jsonbin.io/v3/b/64a56b729d312622a37aa639"
+      "https://s3.f22labs.cloud/storiespluginassets/oni-charmbuilder.json"
     );
     let data = await value.json();
-    setapi(data.record.data[base]?.collection);
-    if (!data.record.data[base]?.product) return;
+    setapi(data.data[base]?.collection);
+    if (!data.data[base]?.product) return;
     setshow(false);
-    handleProduct(data.record.data[base]?.product);
+    handleProduct(data.data[base]?.product);
     return data;
   }
 
