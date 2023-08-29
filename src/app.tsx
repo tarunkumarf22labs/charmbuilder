@@ -39,7 +39,7 @@ function App() {
           ...prev,
           data: [
             ...prev.data,
-            { price: `$${product.variants[0].price.amount}` , title  : product.title  ,  id: product.variants[0].id.replace(
+            { price: `£${product.variants[0].price.amount}` , title  : product.title  ,  id: product.variants[0].id.replace(
               /gid:\/\/shopify\/ProductVariant\//,""
             ) },
           ],
