@@ -57,17 +57,17 @@ function App() {
 
   async function handleData() {
     const value = await window.fetch(
-      "https://api.jsonbin.io/v3/b/64bf944a8e4aa6225ec31875"
+      "https://s3.f22labs.cloud/storiespluginassets/memara-charm.json"
     );
     let data = await value.json();
-    console.log(data.record.data["/products/marilyn-bracelet-in-silver-with-peridot"]);
+    console.log(data["/products/marilyn-bracelet-in-silver-with-peridot"]);
     
-    setapi(data.record.data[base]?.collection);
-    console.log(data.record.data[base]?.product , "data.record.data[base]?.product");
+    setapi(data[base]?.collection);
+    console.log(data[base]?.product , "data.record.data[base]?.product");
     
-    if (!data.record.data[base]?.product) return;
+    if (!data[base]?.product) return;
     setshow(false);
-    handleProduct(data.record.data[base]?.product);
+    handleProduct(data[base]?.product);
     return data;
   }
 
