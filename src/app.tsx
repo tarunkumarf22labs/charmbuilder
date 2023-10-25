@@ -22,8 +22,8 @@ function App() {
   async function handleProduct(id) {
     const client = Client.buildClient({
       storefrontAccessToken: import.meta.env.VITE_SHOPIFY_ACESSTOKEN,
-      domain: "oni-jewelry.myshopify.com",
-      apiVersion: "2023-01",
+      domain: "kikkiza.myshopify.com",
+      apiVersion: "2023-07",
     });
     const productId = `gid://shopify/Product/${id}`;
 
@@ -56,13 +56,14 @@ function App() {
 
   async function handleData() {
     const value = await window.fetch(
-      "https://s3.f22labs.cloud/storiespluginassets/oni-charmbuilder.json"
+      "https://s3.f22labs.cloud/storiespluginassets/memara-charm1.json"
     );
     let data = await value.json();
-    setapi(data.data[base]?.collection);
-    if (!data.data[base]?.product) return;
+    console.log(data[base]?.collection[0], "Coll Id")
+    setapi(data[base]?.collection);
+    if (!data[base]?.product) return;
     setshow(false);
-    handleProduct(data.data[base]?.product);
+    handleProduct(data[base]?.product);
     return data;
   }
 
@@ -76,7 +77,7 @@ function App() {
   //   {title : "Necklace" , id : "295829962912" }
 
   // ]
-
+console.log("Colc", api.collection)
   if (show) return;
 
   async function handleClick() {

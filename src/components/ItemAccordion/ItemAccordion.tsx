@@ -35,8 +35,8 @@ const ItemAccordion = ({ title, Setorder ,  collectionid , products , gopen}) =>
 async  function productData(id){
     const client = Client.buildClient({
       storefrontAccessToken: import.meta.env.VITE_SHOPIFY_ACESSTOKEN,
-      domain: "oni-jewelry.myshopify.com",
-      apiVersion: "2023-01",
+      domain: "kikkiza.myshopify.com",
+      apiVersion: "2023-07",
     });
     const productId = `gid://shopify/Product/${id}`;
     const product =  client.product.fetch(productId)
@@ -56,11 +56,13 @@ async  function productData(id){
   async function handleData() {
     const client = Client.buildClient({
       storefrontAccessToken: import.meta.env.VITE_SHOPIFY_ACESSTOKEN,
-      domain: "oni-jewelry.myshopify.com",
-      apiVersion: "2023-01",
+      domain: "kikkiza.myshopify.com",
+      apiVersion: "2023-07",
     });
     const collectionId = `gid://shopify/Collection/${collectionid}`;
+    console.log("col id", collectionId)
     return client.collection.fetchWithProducts(collectionId, { productsFirst: 10 }).then((collection) => {
+      console.log("Prods ", collection)
       setData(collection.products)
     });
   }
@@ -68,7 +70,9 @@ async  function productData(id){
 
 
   const recommProducts = data?.map(product => {
+    console.log(data,"data")
     const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)  
+    console.log("product", product)
     const id = product.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
     return <RecommProduct {...{ ...product, money, Setorder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
   }
