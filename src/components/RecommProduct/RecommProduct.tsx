@@ -130,7 +130,7 @@ const RecommProduct = ({
   return (
     <div className="recomm-product">
       <div className="recomm-product-img-wrapper">
-        <label for={id}>
+        <label for={id} style={{cursor: 'pointer'}}>
           <img src={images[0].src} alt="product_img" />
         </label>
         <input
