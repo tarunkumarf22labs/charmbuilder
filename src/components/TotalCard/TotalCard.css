@@ -4,10 +4,11 @@
     border-radius: 25px;
     padding: 1rem;
     margin-top: 1rem;
-    font-family: var(--text-primary);
+    font-family: inherit;
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    text-align: left;
 }
 
 .total-cart-heading{
@@ -47,4 +48,19 @@
 
 .total-card-product-title{
     max-width: 70%;
+}
+.act-btn{
+    max-height: none; 
+    border: 1px solid; 
+    padding: 12px 10px; 
+    background: var(--green); 
+    color: white;  
+    width: 249px; 
+    font-size: 13px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+.act-btn:hover{
+    color: #fff !important;
+    background: #839b95 !important;
 }

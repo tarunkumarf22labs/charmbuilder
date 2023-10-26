@@ -155,8 +155,8 @@ const RecommProduct = ({
           let value = (event.target as HTMLSelectElement).selectedOptions[0].innerText          
           let money = (event.target as HTMLSelectElement).selectedOptions[0].dataset.myattribute
           handlevaluechange(data , value, `£${money}`)
-          
         }}
+        style={{visibility: `${variants && variants.length > 1 ? '' : 'hidden'}`}}
         placeholder="selectproduct"
       >
         {variants.map((prev) => {    

@@ -27,9 +27,13 @@
     justify-content: flex-start;
     gap: 5px;
 }
+.recomm-product-title{
+    margin-bottom: 10px;
+}
 .recomm-product-link{
     text-decoration: none;
     color: var(--color-primary);                                            
+    text-align: left;
 }
 #recomm-product-variant-selector{
     color: var(--color-primary);
@@ -45,7 +49,7 @@ input[type="checkbox"]{
     position: absolute;
     top: 10px;
     left: 10px;
-    color: var(--color-primary);
+    color: var(--green);
     background: rgba(255, 255, 255, 0.726);
     border-radius: 50%;
     width: 20px;
