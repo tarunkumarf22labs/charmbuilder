@@ -71,7 +71,7 @@ async  function productData(id){
 
   const recommProducts = data?.map(product => {
     console.log(data,"data")
-    const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)  
+    const [money] = useState(`£${product?.variants?.[0]?.price?.amount}`)  
     console.log("product", product)
     const id = product.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
     return <RecommProduct {...{ ...product, money, Setorder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />

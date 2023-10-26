@@ -154,7 +154,7 @@ const RecommProduct = ({
           let data = (event.target as HTMLInputElement).value
           let value = (event.target as HTMLSelectElement).selectedOptions[0].innerText          
           let money = (event.target as HTMLSelectElement).selectedOptions[0].dataset.myattribute
-          handlevaluechange(data , value, `$${money}`)
+          handlevaluechange(data , value, `£${money}`)
           
         }}
         placeholder="selectproduct"

@@ -25,20 +25,20 @@ function App() {
       domain: "kikkiza.myshopify.com",
       apiVersion: "2023-07",
     });
-    const productId = `gid://shopify/Product/${id}`;
+    const productId = `gid://shopify/Product/4750072250477`;
 
+    console.log( " id ", productId);
     client.product.fetch(productId).then((product) => {
-       let pua =  product.variants[0].id.replace(
-        /gid:\/\/shopify\/ProductVariant\//, ""
-      );
-      console.log(pua);
-      
+      //  let pua =  product.variants[0].id.replace(
+      //   /gid:\/\/shopify\/ProductVariant\//, ""
+      // );
+      console.log("Product -> ", product)
       Setorder((prev) => {
         return {
           ...prev,
           data: [
             ...prev.data,
-            { price: `$${product.variants[0].price.amount}` , title  : product.title  ,  id: product.variants[0].id.replace(
+            { price: `£${product.variants[0].price.amount}` , title  : product.title  ,  id: product.variants[0].id.replace(
               /gid:\/\/shopify\/ProductVariant\//,""
             ) },
           ],
@@ -59,7 +59,7 @@ function App() {
       "https://s3.f22labs.cloud/storiespluginassets/memara-charm1.json"
     );
     let data = await value.json();
-    console.log(data[base]?.collection[0], "Coll Id")
+    console.log(data[base]?.collection, "Coll Id")
     setapi(data[base]?.collection);
     if (!data[base]?.product) return;
     setshow(false);
@@ -95,7 +95,7 @@ console.log("Colc", api.collection)
       ],
     };
 
-    fetch("https://www.wear-oni.com/cart/add.js", {
+    fetch(`https://${import.meta.env.VITE_STORE_BASE_URL}/cart/add.js`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -104,7 +104,7 @@ console.log("Colc", api.collection)
     })
       .then((response) => {
         response.json();
-        window.location.href = "https://www.wear-oni.com/cart";
+        window.location.href = `https://${import.meta.env.VITE_STORE_BASE_URL}/cart`;
       })
       .then((data) => data)
       .catch((error) => console.error(error));
