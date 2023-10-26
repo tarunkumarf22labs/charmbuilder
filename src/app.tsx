@@ -87,11 +87,12 @@ console.log("Colc", api.collection)
         quantity: prev.quantity,
       };
     });
-
+   console.log(document.querySelector(".select-on-focus").value ,  Number(document.querySelector(".select-on-focus").value) , " select-on-focus");
+   
     const payload = {
       items: [
         ...payloaddata,
-        { id: document.querySelector("#variant-selector").value, quantity: 1 },
+        { id: order.initialproduct.id, quantity: Number(document.querySelector(".select-on-focus").value) },
       ],
     };
 
@@ -109,7 +110,6 @@ console.log("Colc", api.collection)
       .then((data) => data)
       .catch((error) => console.error(error));
   }
-
   console.log(order, "");
 
   return (
