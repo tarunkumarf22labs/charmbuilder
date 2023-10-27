@@ -108,7 +108,7 @@ async  function productData(id){
                 <div className="selected-product-text">
                   <div className="selected-product-info">
                     <p className='title'>{product.title}</p>
-                    <p className="color">Variant: {product.type}</p>
+                   {product.type != 'Default Title' && <p className="color">Variant: {product.type}</p>} 
                   </div>
                   <span className="money" style="text-align: end; font-weight: 600; width: 80px;"  dangerouslySetInnerHTML={{ __html: product.price }} ></span>
                 </div>
