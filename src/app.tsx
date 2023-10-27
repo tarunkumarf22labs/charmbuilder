@@ -25,7 +25,7 @@ function App() {
       domain: "kikkiza.myshopify.com",
       apiVersion: "2023-07",
     });
-    const productId = `gid://shopify/Product/4750072250477`;
+    const productId = `gid://shopify/Product/${id}`;
 
     console.log( " id ", productId);
     client.product.fetch(productId).then((product) => {
