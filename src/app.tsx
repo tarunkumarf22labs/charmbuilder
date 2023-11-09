@@ -11,13 +11,13 @@ function App() {
   //   const url = "https://www.wear-oni.com/collections/terra/products/the-wild-haathi-charm";
   const regex = /\/products\/[a-zA-Z0-9-]+/;
   let base = window.location.pathname.match(regex)?.[0]!;
-  const [order, Setorder] = useState({
+  const [order, setOrder] = useState({
     data: [],
     order: [],
     initialproduct: null,
   });
-  const [show, setshow] = useState(true);
-  const [api, setapi] = useState([]);
+  const [show, setShow] = useState(true);
+  const [api, setApi] = useState([]);
 
   async function handleProduct(id) {
     const client = Client.buildClient({
@@ -33,7 +33,7 @@ function App() {
       );
       console.log(pua);
       
-      Setorder((prev) => {
+      setOrder((prev) => {
         return {
           ...prev,
           data: [
@@ -59,10 +59,10 @@ function App() {
       "https://s3.f22labs.cloud/storiespluginassets/oni-charmbuilder.json"
     );
     let data = await value.json();
-    setapi(data.data[base]?.collection);
-    if (!data.data[base]?.product) return;
-    setshow(false);
-    handleProduct(data.data[base]?.product);
+    setApi(data[base]?.collection);
+    if (!data[base]?.product) return;
+    setShow(false);
+    handleProduct(data[base]?.product);
     return data;
   }
 
@@ -80,7 +80,7 @@ function App() {
   if (show) return;
 
   async function handleClick() {
-    const payloaddata = order.order.map((prev) => {
+    const payloadData = order.order.map((prev) => {
       return {
         id: prev.id,
         quantity: prev.quantity,
@@ -89,7 +89,7 @@ function App() {
 
     const payload = {
       items: [
-        ...payloaddata,
+        ...payloadData,
         { id: document.querySelector("#variant-selector").value, quantity: 1 },
       ],
     };
@@ -117,36 +117,15 @@ function App() {
       {api?.map(({ collectionid, title, product }, i) => {
         return (
           <ItemAccordion
-            gopen={i === 0 ? true : false}
+            isAccOpen={i === 0 ? true : false}
             title={title}
             key={collectionid}
-            Setorder={Setorder}
+            setOrder={setOrder}
             collectionid={collectionid}
             products={product}
           />
         );
       })}
-      
-      {/* <div className="flex charm-details" style="display: flex;justify-content: center;align-items: center;margin-top: 15px;">
-        <div
-          className="items_charm-container flex "
-          style="justify-content: end;border-right: 1px solid red;padding-right: 10px;"
-        >
-          {order?.initialproduct?.title &&  
-          (
-          <><h4>{order?.initialproduct?.title} + Additional Items:</h4><h4> {order.order.length}</h4></>)
-}
-        </div>
-        <div className="items_charm-container flex ">
-          <h4 style="padding-left: 8px"> Total price</h4> :{" "}
-          <span
-            className="money"
-            dangerouslySetInnerHTML={{
-              __html: currencyCalculation(order?.data),
-            }}
-          ></span>
-        </div>
-      </div>  */}
       {order?.order?.length ? <TotalCard handleClick={handleClick}  data={order.data}  /> : ""}
     </div>
   );

@@ -3,9 +3,10 @@ import Client from 'shopify-buy';
 import RecommProduct from '../RecommProduct/RecommProduct';
 import { MinusIcon, PlusIcon } from '../../assets/icons';
 import './ItemAccordion.css';
+import SelectedAccItem from '../SelectedAccItem/SelectedAccItem';
 
-const ItemAccordion = ({ title, Setorder ,  collectionid , products , gopen}) => {
-  const [isOpen, setIsOpen] = useState(gopen);
+const ItemAccordion = ({ title, setOrder ,  collectionid , products , isAccOpen}) => {
+  const [isOpen, setIsOpen] = useState(isAccOpen);
   const [data, setData] = useState([]);
   const [edit, setEdit] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState( () =>  []);
@@ -14,7 +15,7 @@ const ItemAccordion = ({ title, Setorder ,  collectionid , products , gopen}) =>
 
   function handleChange(value) {
     setdata(value)
-    Setorder((prev) => {    
+    setOrder((prev) => {    
                   let data = prev.data.filter((item) => item.type !== value.type);
                   let order = prev.order.filter((item) => item.type !== value.type);
                   return {
@@ -70,7 +71,7 @@ async  function productData(id){
   const recommProducts = data?.map(product => {
     const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)  
     const id = product.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
-    return <RecommProduct {...{ ...product, money, Setorder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
+    return <RecommProduct {...{ ...product, money, setOrder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
   }
   )
 
@@ -97,18 +98,7 @@ async  function productData(id){
         {selectedProduct?.map((product) => {
             if(!product.image) return
             return (
-              <div className="charmproduct-details" >
-                <div className="selected-product-img">
-                  <img src={product.image} alt="product_img" />
-                </div>
-                <div className="selected-product-text">
-                  <div className="selected-product-info">
-                    <p className='title'>{product.title}</p>
-                    <p className="color">Color: {product.type}</p>
-                  </div>
-                  <span className="money" style="text-align: end; font-weight: 600; width: 80px;"  dangerouslySetInnerHTML={{ __html: product.price }} ></span>
-                </div>
-              </div>
+              <SelectedAccItem {...product}/>
             )
           })}
         </div>

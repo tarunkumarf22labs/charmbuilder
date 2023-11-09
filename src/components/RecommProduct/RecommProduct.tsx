@@ -8,7 +8,7 @@ const RecommProduct = ({
   images,
   id,
   variants,
-  Setorder,
+  setOrder,
   setSelectedProduct,
   setEdit,
   money
@@ -33,7 +33,7 @@ const RecommProduct = ({
       });
 
 
-      Setorder((prev) => {
+      setOrder((prev) => {
         let data = prev.data.filter((item) => item.title !== title);
         let order = prev.order.filter((item) => item.title !== title);
         return {
@@ -43,7 +43,7 @@ const RecommProduct = ({
         };
       });
     } else {
-      Setorder((prev) => {
+      setOrder((prev) => {
         let data = prev.data.filter((item) => item.title !== title);
         let order = prev.order.filter((item) => item.title !== title);
         return {
@@ -83,7 +83,7 @@ const RecommProduct = ({
   function handlevaluechange(id , value , money){     
     setEdit(false);
     setIsChecked(true);
-    Setorder((prev) => {
+    setOrder((prev) => {
       let data = prev.data.filter((item) => item.title !== title);
       let order = prev.order.filter((item) => item.title !== title);
       return {
@@ -157,7 +157,7 @@ const RecommProduct = ({
           handlevaluechange(data , value, `$${money}`)
           
         }}
-        placeholder="selectproduct"
+        placeholder="Select product"
       >
         {variants.map((prev) => {    
           return (
