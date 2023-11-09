@@ -31,7 +31,7 @@ const TotalCard = ({ handleClick, data }) => {
           onClick={handleClick}
           style="max-height: none;border: 1px solid;padding: 10px;background: #6E2637;color: white;  height: 35px; width: 249px; padding: 3px 28px; font-size: 18px;"
         >
-          Add to Bag
+          Buy Now
         </button>
       </div>
       {/* <div className="show-all">Show All</div> */}

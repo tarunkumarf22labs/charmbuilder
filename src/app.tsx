@@ -28,24 +28,31 @@ function App() {
     const productId = `gid://shopify/Product/${id}`;
 
     client.product.fetch(productId).then((product) => {
-       let pua =  product.variants[0].id.replace(
-        /gid:\/\/shopify\/ProductVariant\//, ""
+      let pua = product.variants[0].id.replace(
+        /gid:\/\/shopify\/ProductVariant\//,
+        ""
       );
       console.log(pua);
-      
+
       setOrder((prev) => {
         return {
           ...prev,
           data: [
             ...prev.data,
-            { price: `$${product.variants[0].price.amount}` , title  : product.title  ,  id: product.variants[0].id.replace(
-              /gid:\/\/shopify\/ProductVariant\//,""
-            ) },
+            {
+              price: `$${product.variants[0].price.amount}`,
+              title: product.title,
+              id: product.variants[0].id.replace(
+                /gid:\/\/shopify\/ProductVariant\//,
+                ""
+              ),
+            },
           ],
           initialproduct: {
             quantity: 1,
             id: product.variants[0].id.replace(
-              /gid:\/\/shopify\/ProductVariant\//,""
+              /gid:\/\/shopify\/ProductVariant\//,
+              ""
             ),
             title: product.title,
           },
@@ -94,19 +101,69 @@ function App() {
       ],
     };
 
-    fetch("https://www.wear-oni.com/cart/add.js", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const client = Client.buildClient({
+      storefrontAccessToken: import.meta.env.VITE_SHOPIFY_ACESSTOKEN,
+      domain: "oni-jewelry.myshopify.com",
+      apiVersion: "2023-01",
+    });
+    let checkoutId = await client.checkout.create().then((checkout) => {
+      return checkout.id;
+    });
+    console.log("Checkout", checkoutId);
+
+    // const lineItemsToAdd = [
+    //   {
+    //     variantId: 'gid://shopify/ProductVariant/41914336313504',
+    //     quantity: 5,
+    //   }
+    // ];
+
+    // transform payload.items array above format
+    const lineItemsToAdd = payload.items.reduce(
+      (accum, pItem) =>{
+        accum.push({
+          variantId: `gid://shopify/ProductVariant/${pItem.id}`,
+          quantity: pItem.quantity,
+        })
+        return accum
       },
-      body: JSON.stringify(payload),
-    })
-      .then((response) => {
-        response.json();
-        window.location.href = "https://www.wear-oni.com/cart";
-      })
-      .then((data) => data)
-      .catch((error) => console.error(error));
+      []
+    );
+
+    // add items to checkout
+    checkoutId = await  client.checkout.addLineItems(checkoutId, lineItemsToAdd).then((checkout) => {
+       return checkout.id
+      // Array with one additional line item
+    });
+
+    const discountCode = 'BF2023';
+
+    console.log("payload", payload);
+    console.log("payload", lineItemsToAdd);
+
+    // apply discount code
+    const checkoutUrl = await client.checkout.addDiscount(checkoutId, discountCode).then(checkout => {
+      console.log(checkout);
+      return checkout.webUrl
+    });
+    console.log(checkoutUrl, "webUrl");
+
+    // redirect to checkout
+    window.location.href = checkoutUrl;
+
+    //   fetch("https://www.wear-oni.com/cart/add.js", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(payload),
+    //   })
+    //     .then((response) => {
+    //       response.json();
+    //       window.location.href = "https://www.wear-oni.com/cart";
+    //     })
+    //     .then((data) => data)
+    //     .catch((error) => console.error(error));
   }
 
   console.log(order, "");
@@ -126,7 +183,11 @@ function App() {
           />
         );
       })}
-      {order?.order?.length ? <TotalCard handleClick={handleClick}  data={order.data}  /> : ""}
+      {order?.order?.length ? (
+        <TotalCard handleClick={handleClick} data={order.data} />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
