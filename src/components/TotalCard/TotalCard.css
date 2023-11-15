@@ -18,7 +18,17 @@
 }
 
 .total-card-price{
-    font-weight: bold;
+    display: flex !important;
+    flex-direction: column !important;
+}
+.total-card-price .money:first-child{
+    text-decoration: line-through !important;
+    color: rgb(130, 130, 130) !important;
+    font-size: 14px;
+}
+.total-card-price .money:last-child{
+    color: #D0342c !important;
+    font-weight: 600 !important;
 }
 
 .total-card-items{

@@ -3,6 +3,8 @@ import TotalCardProduct from "../TotalCardProduct/TotalCardProduct";
 import "./TotalCard.css";
 
 const TotalCard = ({ handleClick, data }) => {
+  console.log("Cart Total ",data)
+ 
   return (
     <div className="total-card br-1">
       <div className="total-cart-heading">
@@ -12,6 +14,12 @@ const TotalCard = ({ handleClick, data }) => {
             className="money"
             dangerouslySetInnerHTML={{
               __html: currencyCalculation(data),
+            }}
+          ></span>
+          <span
+            className="money"
+            dangerouslySetInnerHTML={{
+              __html: currencyCalculation(data, 15),
             }}
           ></span>
         </div>
