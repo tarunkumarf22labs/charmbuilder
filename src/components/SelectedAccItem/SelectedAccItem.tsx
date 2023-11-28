@@ -18,7 +18,7 @@ const SelectedAccItem = ({ image, title, type, price }: Props) => {
         </div>
         <span
           className="money"
-          style="text-align: end; font-weight: 600; width: 80px;"
+          style="text-align: end; font-weight: 600; width: 80px; white-space: nowrap;"
           dangerouslySetInnerHTML={{ __html: price }}
         ></span>
       </div>

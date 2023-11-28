@@ -27,7 +27,7 @@
     font-size: 14px;
 }
 .total-card-price .money:last-child{
-    color: #D0342c !important;
+    color: #E1493E !important;
     font-weight: 600 !important;
 }
 
@@ -43,7 +43,9 @@
 .total-card-product{
     display: flex;
     justify-content: space-between;
+    gap: 1.5rem;
     align-items: center;
+    margin-bottom: 5px;
 }
 .total-card-product-price{
     font-weight: bold;
@@ -57,4 +59,27 @@
 
 .total-card-product-title{
     max-width: 70%;
+}
+
+.total-card-product-price{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.total-card-product-price .money:first-child{
+    text-decoration: line-through !important;
+    color: rgb(130, 130, 130) !important;
+    font-size: 14px;
+}
+.total-card-product-price .money:last-child{
+    color: #E1493E !important;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 550px) {
+    .total-card-product-price{
+        flex-direction: column;
+        gap: 5px;
+    }
 }
