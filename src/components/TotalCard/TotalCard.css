@@ -19,12 +19,14 @@
 
 .total-card-price{
     display: flex !important;
-    flex-direction: column !important;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 .total-card-price .money:first-child{
     text-decoration: line-through !important;
     color: rgb(130, 130, 130) !important;
     font-size: 14px;
+    font-weight: 500;
 }
 .total-card-price .money:last-child{
     color: #E1493E !important;
@@ -48,7 +50,7 @@
     margin-bottom: 5px;
 }
 .total-card-product-price{
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .show-all{
@@ -78,8 +80,23 @@
 }
 
 @media screen and (max-width: 550px) {
-    .total-card-product-price{
+    .total-card-product-price,.total-card-price{
+        align-items: flex-end;
         flex-direction: column;
         gap: 5px;
     }
+}
+
+.act-btn{
+    border-radius: 20px;
+    margin-top: 10px;
+    transition: all 0.5s ease;
+    max-height: none;
+    border: 1px solid #6E2637;
+    background: #6E2637;
+    color: white;
+    height: 35px;
+    width: 249px; 
+    padding: 3px 28px; 
+    font-size: 18px;
 }

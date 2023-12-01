@@ -5,7 +5,7 @@ import { MinusIcon, PlusIcon } from '../../assets/icons';
 import './ItemAccordion.css';
 import SelectedAccItem from '../SelectedAccItem/SelectedAccItem';
 
-const ItemAccordion = ({ title, setOrder ,  collectionid , products , isAccOpen}) => {
+const ItemAccordion = ({ title, setOrder , order,  collectionid , products , isAccOpen}) => {
   const [isOpen, setIsOpen] = useState(isAccOpen);
   const [data, setData] = useState([]);
   const [edit, setEdit] = useState(true);
@@ -71,7 +71,7 @@ async  function productData(id){
   const recommProducts = data?.map(product => {
     const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)  
     const id = product.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
-    return <RecommProduct {...{ ...product, money, setOrder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
+    return <RecommProduct {...{ ...product, money, order, setOrder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
   }
   )
 
@@ -98,7 +98,7 @@ async  function productData(id){
         {selectedProduct?.map((product) => {
             if(!product.image) return
             return (
-              <SelectedAccItem {...product}/>
+              <SelectedAccItem {...{...product, setOrder, order, setEdit, setSelectedProduct, selectedProduct}}/>
             )
           })}
         </div>

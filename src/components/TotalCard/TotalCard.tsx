@@ -3,7 +3,7 @@ import TotalCardProduct from "../TotalCardProduct/TotalCardProduct";
 import "./TotalCard.css";
 
 const TotalCard = ({ handleClick, data }) => {
-  console.log("Cart Total ",data)
+  // console.log("Cart Total ",data)
  
   return (
     <div className="total-card br-1">
@@ -35,9 +35,9 @@ const TotalCard = ({ handleClick, data }) => {
         style="display: flex; justify-content: center; align-item: center; gap: 1rem;"
       >
         <button
-          className="acc-body"
+          className="act-btn"
           onClick={handleClick}
-          style="max-height: none;border: 1px solid;padding: 10px;background: #6E2637;color: white;  height: 35px; width: 249px; padding: 3px 28px; font-size: 18px;"
+          style=""
         >
           Buy Now
         </button>

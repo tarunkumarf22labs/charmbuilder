@@ -32,7 +32,7 @@ function App() {
         /gid:\/\/shopify\/ProductVariant\//,
         ""
       );
-      console.log(pua);
+      // console.log(pua);
 
       setOrder((prev) => {
         return {
@@ -63,7 +63,7 @@ function App() {
 
   async function handleData() {
     const value = await window.fetch(
-      "https://s3.f22labs.cloud/storiespluginassets/oni-charmbuilder.json"
+      "https://s3.f22labs.cloud/storiespluginassets/oni-charm.json"
     );
     let data = await value.json();
     setApi(data[base]?.collection);
@@ -189,13 +189,14 @@ function App() {
           fill="white"
         />
       </svg>
-      <h2 className="charmbuilder-title">Pairs Well With</h2>
+      <h2 className="charmbuilder-title">Stack It With</h2>
       {api?.map(({ collectionid, title, product }, i) => {
         return (
           <ItemAccordion
             isAccOpen={i === 0 ? true : false}
             title={title}
             key={collectionid}
+            order={order}
             setOrder={setOrder}
             collectionid={collectionid}
             products={product}
