@@ -6,7 +6,7 @@ const TotalCard = ({ handleClick, data }) => {
   // console.log("Cart Total ",data)
  
   return (
-    <div className="total-card br-1">
+    <div className="total-card">
       <div className="total-cart-heading">
         <div className="total-card-text">Total Price</div>
         <div className="total-card-price">
@@ -14,12 +14,6 @@ const TotalCard = ({ handleClick, data }) => {
             className="money"
             dangerouslySetInnerHTML={{
               __html: currencyCalculation(data),
-            }}
-          ></span>
-          <span
-            className="money"
-            dangerouslySetInnerHTML={{
-              __html: currencyCalculation(data, 15),
             }}
           ></span>
         </div>
@@ -37,9 +31,9 @@ const TotalCard = ({ handleClick, data }) => {
         <button
           className="act-btn"
           onClick={handleClick}
-          style=""
+          style="cursor: pointer"
         >
-          Buy Now
+          Buy it now
         </button>
       </div>
       {/* <div className="show-all">Show All</div> */}

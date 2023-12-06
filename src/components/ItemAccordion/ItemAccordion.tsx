@@ -36,7 +36,7 @@ const ItemAccordion = ({ title, setOrder , order,  collectionid , products , isA
 async  function productData(id){
     const client = Client.buildClient({
       storefrontAccessToken: import.meta.env.VITE_SHOPIFY_ACESSTOKEN,
-      domain: "oni-jewelry.myshopify.com",
+      domain: "aliciaswim.myshopify.com",
       apiVersion: "2023-01",
     });
     const productId = `gid://shopify/Product/${id}`;
@@ -57,7 +57,7 @@ async  function productData(id){
   async function handleData() {
     const client = Client.buildClient({
       storefrontAccessToken: import.meta.env.VITE_SHOPIFY_ACESSTOKEN,
-      domain: "oni-jewelry.myshopify.com",
+      domain: "aliciaswim.myshopify.com",
       apiVersion: "2023-01",
     });
     const collectionId = `gid://shopify/Collection/${collectionid}`;
@@ -69,7 +69,7 @@ async  function productData(id){
 
 
   const recommProducts = data?.map(product => {
-    const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)  
+    const [money] = useState(`£${product?.variants?.[0]?.price?.amount}`)  
     const id = product.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
     return <RecommProduct {...{ ...product, money, order, setOrder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
   }
@@ -78,7 +78,7 @@ async  function productData(id){
 
   return (
     <>
-      <div className={`item-accordion ${edit ? '': 'hidden'} ${isOpen? "br-1" : "br-2"}`}>
+      <div className={`item-accordion ${edit ? '': 'hidden'}`}>
         <div className="acc-header" onClick={() => {
           setIsOpen(!isOpen)
         }}>

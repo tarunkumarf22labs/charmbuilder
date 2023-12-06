@@ -15,9 +15,11 @@
     border-radius: 25px;
 }
 .acc-title{
-    font-size: var(--text-large);
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 400;
     color: var(--color-primary);
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
 }
 .added-item{
     color: var(--color-secondary);
@@ -71,7 +73,7 @@
     justify-content: flex-start;
     flex-direction: column;
     border: 1px solid var(--color-primary-light);
-    border-radius: 10px;
+    /* border-radius: 10px; */
     padding: 1rem;
     gap: 5px;
     font-family: var(--text-primary);
@@ -103,7 +105,7 @@
     align-items: flex-start;
 }
 .selected-product-info .title{
-    font-size: 16px;
+    font-size: 13px;
 }
 .selected-product-info .color{
     font-size: 12px;

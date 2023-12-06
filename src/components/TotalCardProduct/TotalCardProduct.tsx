@@ -1,5 +1,3 @@
-import { getDiscountedPrice } from "../../utils/currencyCalculation";
-
 type Props = {
   title: string;
   price: string;
@@ -19,13 +17,13 @@ const TotalCardProduct = ({ title, price }: Props) => {
           }}
           style="white-space: nowrap;"
         ></span>
-        <span
+        {/* <span
           className="money"
           dangerouslySetInnerHTML={{
             __html: getDiscountedPrice(price, 15),
           }}
           style="white-space: nowrap; font-weight: bold;"
-        ></span>
+        ></span> */}
         
       </div>
     </div>

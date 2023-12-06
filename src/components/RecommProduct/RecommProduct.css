@@ -11,8 +11,8 @@
   width: 150px;
   height: 150px;
   border: 1px solid var(--color-primary-light);
-  border-radius: 10px;
-  overflow: hidden;
+  /* border-radius: 10px;
+  overflow: hidden; */
 }
 .recomm-product-img-wrapper img {
   height: 100%;
@@ -20,14 +20,14 @@
   object-fit: cover;
 }
 .recomm-product-info {
-  width: 180px;
+  width: 150px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 5px;
 }
 .recomm-product-title {
-  font-size: 15px;
+  font-size: 13px;
   margin-bottom: 5px;
 }
 .recomm-product-price {
@@ -43,7 +43,7 @@
   color: var(--color-primary);
   padding: 5px;
   border: 1px solid var(--color-primary-light);
-  border-radius: 5px;
+  /* border-radius: 5px; */
   font-size: 15px;
 }
 input[type="checkbox"] {
@@ -60,12 +60,12 @@ input[type="checkbox"] {
   height: 20px;
 }
 .recomm-product-act-btn {
-  color: var(--color-primary-light);
+  color: var(--color-primary);
   font-size: 15px;
   padding: 4px 5px;
-  background: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.726);
+  border: 1px solid rgb(150, 147, 147);
+  /* border-radius: 4px; */
   cursor: pointer;
 }
 .selected-product-remove-btn {
@@ -79,5 +79,6 @@ input[type="checkbox"] {
 .act-disabled{
     background: #828282;
     border: 1px solid #828282;
+    color: #fff;
     cursor: not-allowed;
 }

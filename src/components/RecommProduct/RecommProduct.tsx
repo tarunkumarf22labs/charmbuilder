@@ -2,7 +2,6 @@
 import "./RecommProduct.css";
 // import { SelectIcon } from "../../assets/icons";
 import { memo } from "preact/compat";
-import { getDiscountedPrice } from "../../utils/currencyCalculation";
 
 const RecommProduct = ({
   title,
@@ -157,46 +156,45 @@ const RecommProduct = ({
         <a href={`/products/${handle}`} class="recomm-product-link">
           <div class="recomm-product-title">{title}</div>
           <div class="recomm-product-price">
-            <span
+            {/* <span
               className="money"
               dangerouslySetInnerHTML={{ __html: money }}
               style="font-size: 14px; color: #828282 !important; text-decoration: line-through;"
-            ></span>
+            ></span> */}
             <span
               className="money"
               style="color: var(--color-primary); font-size: 16px;"
               dangerouslySetInnerHTML={{
-                __html: getDiscountedPrice(money, 15),
+                __html:money,
               }}
             ></span>
           </div>
         </a>
 
         <select
-          id="recomm-product-variant-selector"
-          onChange={(event) => {
-            let data = (event.target as HTMLInputElement).value;
-            let value = (event.target as HTMLSelectElement).selectedOptions[0]
-              .innerText;
-            let money = (event.target as HTMLSelectElement).selectedOptions[0]
-              .dataset.myattribute;
-            handlevaluechange(data, value, `$${money}`);
-          }}
-          placeholder="Select product"
-        >
-          {variants.map((prev) => {
-            return (
-              <option
-                data-myattribute={prev.price?.amount}
-                data-currencysymbol={prev.price?.currencyCode}
-                value={prev.id.replace(/gid:\/\/shopify\/ProductVariant\//, "")}
-              >
-                {prev.title}
-              </option>
-            );
-          })}
-        </select>
-        <button className={`recomm-product-act-btn ${isProductAddedToCart() && 'act-disabled'}`} disabled={isProductAddedToCart()} onClick={(event) => handleIsChecked(event)}>{isProductAddedToCart() ? "Added to Bag": "Add to Bag"}</button>
+         id = "recomm-product-variant-selector"
+        onChange={(event) => {
+          let data = (event.target as HTMLInputElement).value
+          let value = (event.target as HTMLSelectElement).selectedOptions[0].innerText          
+          let money = (event.target as HTMLSelectElement).selectedOptions[0].dataset.myattribute
+          handlevaluechange(data , value, `£${money}`)
+        }}
+        style={{visibility: `${variants && variants.length > 1 ? '' : 'hidden'}`}}
+        placeholder="selectproduct"
+      >
+        {variants.map((prev) => {    
+          return (
+            <option
+            data-myattribute= {prev.price?.amount}
+            data-currencysymbol  = {prev.price?.currencyCode}
+              value={prev.id.replace(/gid:\/\/shopify\/ProductVariant\//, "")}
+            >
+              {prev.title}
+            </option>
+          );
+        })}
+      </select>
+        <button className={`recomm-product-act-btn ${isProductAddedToCart()? 'act-disabled': ""}`} disabled={isProductAddedToCart()} onClick={(event) => handleIsChecked(event)}>{isProductAddedToCart() ? "Added to cart": "Add to cart"}</button>
       </div>
     </div>
   );

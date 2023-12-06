@@ -1,7 +1,7 @@
 .total-card{
     width: 100%;
     border: 1px solid var(--color-primary-light);
-    border-radius: 25px;
+    /* border-radius: 25px; */
     padding: 1rem;
     margin-top: 1rem;
     font-family: var(--text-primary);
@@ -21,8 +21,10 @@
     display: flex !important;
     gap: 10px;
     flex-wrap: wrap;
+    color: var(--color-primary) !important;
+    font-weight: bold;
 }
-.total-card-price .money:first-child{
+/* .total-card-price .money:first-child{
     text-decoration: line-through !important;
     color: rgb(130, 130, 130) !important;
     font-size: 14px;
@@ -31,7 +33,7 @@
 .total-card-price .money:last-child{
     color: #E1493E !important;
     font-weight: 600 !important;
-}
+} */
 
 .total-card-items{
     color: var(--color-secondary);
@@ -67,9 +69,12 @@
     display: flex;
     gap: 10px;
     justify-content: flex-end;
+    color: var(--color-primary) !important;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.total-card-product-price .money:first-child{
+/* .total-card-product-price .money:first-child{
     text-decoration: line-through !important;
     color: rgb(130, 130, 130) !important;
     font-size: 14px;
@@ -77,7 +82,7 @@
 .total-card-product-price .money:last-child{
     color: #E1493E !important;
     font-size: 14px;
-}
+} */
 
 @media screen and (max-width: 550px) {
     .total-card-product-price,.total-card-price{
@@ -88,15 +93,24 @@
 }
 
 .act-btn{
-    border-radius: 20px;
+    /* border-radius: 20px; */
     margin-top: 10px;
     transition: all 0.5s ease;
     max-height: none;
-    border: 1px solid #6E2637;
-    background: #6E2637;
-    color: white;
+    border: 1px solid var(--color-primary);
+    background: rgb(241, 241, 241);
+    border: 1px solid rgb(150, 147, 147);
+    color: var(--color-primary);
     height: 35px;
     width: 249px; 
     padding: 3px 28px; 
-    font-size: 18px;
+    font-size: 1.5rem;
+    
+}
+.act-btn{
+    border: 1px solid var(--color-primary);
+    letter-spacing: 0.06rem;
+}
+.act-btn:hover{
+    box-shadow: 0px 0px 0px 1.5px black;
 }

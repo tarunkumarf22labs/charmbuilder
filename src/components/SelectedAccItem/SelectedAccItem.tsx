@@ -52,7 +52,7 @@ const SelectedAccItem = ({
       <div className="selected-product-text">
         <div className="selected-product-info">
           <p className="title">{title}</p>
-          <p className="color">Color: {type}</p>
+          {type != 'Default Title' && <p className="color">Variant: {type}</p>}
           <span
             className="selected-product-remove-btn"
             onClick={() => removeSelectedProduct(title)}
