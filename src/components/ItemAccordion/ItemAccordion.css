@@ -34,7 +34,7 @@
 .acc-body{
     width: 100%;
     border-radius: 20px;
-    padding: 20px;
+    padding: 0 16px 20px;
     padding-top: 0px;
     max-height: 3000px;
     height: auto;
