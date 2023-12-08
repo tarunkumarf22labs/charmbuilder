@@ -12,7 +12,7 @@ const ItemAccordion = ({ title, setOrder , order,  collectionid , products , isA
   const [selectedProduct, setSelectedProduct] = useState( () =>  []);
   const [vdata, setdata] = useState({})
 
-
+console.log("Prop ", products)
   function handleChange(value) {
     setdata(value)
     setOrder((prev) => {    
@@ -70,12 +70,13 @@ async  function productData(id){
 
   const recommProducts = data?.map(product => {
     const [money] = useState(`$${product?.variants?.[0]?.price?.amount}`)  
-    const id = product.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
-    return <RecommProduct {...{ ...product, money, order, setOrder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
+    const id = product?.variants[0].id.replace(/gid:\/\/shopify\/ProductVariant\//, "");
+    console.log("P", product)
+    return product && <RecommProduct {...{ ...product, money, order, setOrder, selectedProduct, setSelectedProduct, setEdit }} datatitle = {title}   ischecked = { id === vdata.id ? true : false  }  handleChange={handleChange} />
   }
   )
 
-
+console.log("first data", data);
   return (
     <>
       <div className={`item-accordion ${edit ? '': 'hidden'} ${isOpen? "br-1" : "br-2"}`}>

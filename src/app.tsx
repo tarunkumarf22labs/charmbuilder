@@ -32,7 +32,7 @@ function App() {
         /gid:\/\/shopify\/ProductVariant\//,
         ""
       );
-      // console.log(pua);
+      // console.log("Product", pua);
 
       setOrder((prev) => {
         return {
@@ -63,9 +63,10 @@ function App() {
 
   async function handleData() {
     const value = await window.fetch(
-      "https://s3.f22labs.cloud/storiespluginassets/oni-charm.json"
+      "https://s3.f22labs.cloud/storiespluginassets/oni-charm2.json"
     );
     let data = await value.json();
+    console.log("Data -> ",data[base])
     setApi(data[base]?.collection);
     if (!data[base]?.product) return;
     setShow(false);

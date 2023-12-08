@@ -135,7 +135,7 @@ const RecommProduct = ({
     <div className="recomm-product">
       <div className="recomm-product-img-wrapper">
         <label for={id}>
-          <img src={images[0].src} alt="product_img" />
+          {images && <img src={images[0].src} alt="product_img" />}
         </label>
         {/* <input
           type="checkbox"
@@ -184,7 +184,7 @@ const RecommProduct = ({
           }}
           placeholder="Select product"
         >
-          {variants.map((prev) => {
+          {variants?.map((prev) => {
             return (
               <option
                 data-myattribute={prev.price?.amount}
