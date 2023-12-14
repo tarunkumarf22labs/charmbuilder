@@ -55,7 +55,7 @@ const RecommProduct = ({
             ...data,
             {
               title,
-              image: images[0].src,
+              image: images[images.length-1].src,
               price: money,
               id,
             },
@@ -76,7 +76,7 @@ const RecommProduct = ({
           id,
           title: title,
           price: money,
-          image: images[0].src,
+          image: images[images.length-1].src,
           type: variants[0].title,
         },
       ]);
@@ -117,7 +117,7 @@ const RecommProduct = ({
           id,
           title: title,
           price: money,
-          image: images[0].src,
+          image: images[images.length-1].src,
           type: value,
         },
       ];
@@ -134,7 +134,7 @@ const RecommProduct = ({
     <div className="recomm-product">
       <div className="recomm-product-img-wrapper">
         <label for={id}>
-          <img src={images[0].src} alt="product_img" />
+          <img src={images[images.length-1].src} alt="product_img" />
         </label>
         {/* <input
           type="checkbox"

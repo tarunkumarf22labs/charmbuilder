@@ -171,7 +171,7 @@ function App() {
 
   return (
     <div className="app">
-      <h2 className="charmbuilder-title">Pairs Well With</h2>
+      <h2 className="charmbuilder-title">Match It With</h2>
       {api?.map(({ collectionid, title, product }, i) => {
         return (
           <ItemAccordion
