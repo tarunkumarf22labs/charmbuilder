@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'uelements';
 import Client from 'shopify-buy';
 import RecommProduct from '../RecommProduct/RecommProduct';
-import { MinusIcon, PlusIcon } from '../../assets/icons';
+// import { MinusIcon, PlusIcon } from '../../assets/icons';
 import './ItemAccordion.css';
 import SelectedAccItem from '../SelectedAccItem/SelectedAccItem';
 
-const ItemAccordion = ({ title, setOrder , order,  collectionid , products , isAccOpen}) => {
-  const [isOpen, setIsOpen] = useState(isAccOpen);
+const ItemAccordion = (
+  { title,
+    setOrder,
+    order,  
+    collectionid, 
+    products, 
+    // isAccOpen
+  }) => {
+  // const [isOpen, setIsOpen] = useState(isAccOpen);
   const [data, setData] = useState([]);
   const [edit, setEdit] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState( () =>  []);
@@ -79,14 +86,16 @@ async  function productData(id){
 console.log("first data", data);
   return (
     <>
-      <div className={`item-accordion ${edit ? '': 'hidden'} ${isOpen? "br-1" : "br-2"}`}>
-        <div className="acc-header" onClick={() => {
-          setIsOpen(!isOpen)
-        }}>
+      {/* <div className={`item-accordion ${edit ? '': 'hidden'} ${isOpen? "br-1" : "br-2"}`}> */}
+      <div className={`item-accordion ${edit ? '': 'hidden'} br-1`}>
+        <div className="acc-header" 
+        // onClick={() => {setIsOpen(!isOpen)}}
+        >
           <span className='acc-title'> {title}</span>
-          {isOpen ? (<MinusIcon />) : (<PlusIcon />)}
+          {/* {isOpen ? (<MinusIcon />) : (<PlusIcon />)} */}
         </div>
-        <div className={`acc-body ${isOpen ? "" : "hide"}`}>
+        {/* <div className={`acc-body ${isOpen ? "" : "hide"}`}> */}
+        <div className={`acc-body`}>
           <div className="recomm-products-wrapper">
             {recommProducts}
           </div>  

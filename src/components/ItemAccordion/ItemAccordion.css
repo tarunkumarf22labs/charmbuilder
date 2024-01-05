@@ -1,7 +1,7 @@
 .item-accordion{
     font-family: var(--text-primary);
     margin-bottom: 5px;
-    border: 1px solid var(--color-primary-light);
+    /* border: 1px solid var(--color-primary-light); */
 }
 
 .acc-header{
@@ -15,7 +15,7 @@
     border-radius: 25px;
 }
 .acc-title{
-    font-size: var(--text-large);
+    font-size: 20px;
     font-weight: 500;
     color: var(--color-primary);
 }
@@ -44,8 +44,7 @@
     justify-content: flex-start;
     gap: 2rem;
     overflow-x: auto;
-    padding: 15px 0px;
-    padding-top: 0px;
+    padding: 0px 0px 70px;
 }
 .recomm-products-wrapper::-webkit-scrollbar{
     height: 5px;
@@ -76,6 +75,7 @@
     gap: 5px;
     font-family: var(--text-primary);
     margin-bottom: 5px;
+    background: #fff;
 }
 .charmproduct-details{
     display: grid;
