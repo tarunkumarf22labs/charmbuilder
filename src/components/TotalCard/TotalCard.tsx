@@ -15,6 +15,7 @@ const TotalCard = ({ handleClick, data }) => {
             dangerouslySetInnerHTML={{
               __html: currencyCalculation(data),
             }}
+            style="text-align: end; font-weight: 600; white-space: nowrap;"
           ></span>
         </div>
       </div>
@@ -33,7 +34,7 @@ const TotalCard = ({ handleClick, data }) => {
           onClick={handleClick}
           style="cursor: pointer"
         >
-          Buy it now
+          BUY IT NOW
         </button>
       </div>
       {/* <div className="show-all">Show All</div> */}

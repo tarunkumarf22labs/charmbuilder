@@ -11,6 +11,7 @@ function App() {
   //   const url = "https://www.wear-oni.com/collections/terra/products/the-wild-haathi-charm";
   const regex = /\/products\/[a-zA-Z0-9-]+/;
   let base = window.location.pathname.match(regex)?.[0]!;
+  console.log(base)
   const [order, setOrder] = useState({
     data: [],
     order: [],
@@ -63,7 +64,7 @@ function App() {
 
   async function handleData() {
     const value = await window.fetch(
-      "https://s3.f22labs.cloud/storiespluginassets/alicia-charmbuilder.json"
+      "https://s3.f22labs.cloud/storiespluginassets/alicia-charms.json"
     );
     let data = await value.json();
     setApi(data[base]?.collection);

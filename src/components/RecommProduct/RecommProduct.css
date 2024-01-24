@@ -10,7 +10,7 @@
   flex-shrink: 0;
   width: 150px;
   height: 150px;
-  border: 1px solid var(--color-primary-light);
+  /* border: 1px solid var(--color-primary-light); */
   /* border-radius: 10px;
   overflow: hidden; */
 }
@@ -28,7 +28,7 @@
 }
 .recomm-product-title {
   font-size: 13px;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 .recomm-product-price {
   display: flex;
@@ -60,13 +60,14 @@ input[type="checkbox"] {
   height: 20px;
 }
 .recomm-product-act-btn {
-  color: var(--color-primary);
-  font-size: 15px;
+  color: #fff;
+  font-size: 1.5rem;
   padding: 4px 5px;
-  background: rgba(255, 255, 255, 0.726);
+  background: var(--color-primary);
   border: 1px solid rgb(150, 147, 147);
   /* border-radius: 4px; */
   cursor: pointer;
+  text-transform: uppercase;
 }
 .selected-product-remove-btn {
   color: var(--color-primary);

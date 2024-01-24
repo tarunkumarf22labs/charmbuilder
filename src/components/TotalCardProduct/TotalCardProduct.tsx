@@ -15,7 +15,11 @@ const TotalCardProduct = ({ title, price }: Props) => {
           dangerouslySetInnerHTML={{
             __html: price,
           }}
-          style="white-space: nowrap;"
+          style="white-space: nowrap; 
+          text-align: end;
+          font-weight: 600;
+          width: 80px;
+          white-space: nowrap;"
         ></span>
         {/* <span
           className="money"

@@ -106,6 +106,7 @@
 }
 .selected-product-info .title{
     font-size: 13px;
+    margin: 0 !important;
 }
 .selected-product-info .color{
     font-size: 12px;
